@@ -1,0 +1,42 @@
+<% provide(:title, @name) %>
+<h1> <%= @name %> </h1>
+<div id="Chart1" style="height: 400px; min-width: 500px"></div>
+<!--<p id="demo"> </p>-->
+
+<script>
+$(function() {
+    var json_data = <%= raw @stock.to_json(only: [:date, :high]) %>;
+
+	var ar  = json_data.map(function(x){
+		return [Date.parse(x.date), +x.high];
+	});
+
+     ar.sort(sortFunction);
+     
+     function sortFunction(a,b){
+            return (a[0]<b[0]) ? -1:1;
+     }
+
+	//jsons = JSON.stringify(ar);
+    //document.getElementById("demo").innerHTML = jsons;
+    $('#Chart1').highcharts('StockChart', {
+
+        rangeSelector: {
+            selected: 1
+        },
+
+        title: {
+            text: '<%= @name %> Stock Price'
+        },
+
+        
+        series: [{
+            name: '<%= @name %>',
+            data: ar,
+            tooltip: {
+                valueDecimals: 2
+            }
+        }]
+    });
+});
+</script>

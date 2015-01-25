@@ -11,25 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123075021) do
-
-  create_table "stock_infos", force: :cascade do |t|
-    t.datetime "date"
-    t.decimal  "open"
-    t.decimal  "high"
-    t.decimal  "low"
-    t.decimal  "close"
-    t.decimal  "volume"
-    t.decimal  "adjclose"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20150125203100) do
 
   create_table "stocks", force: :cascade do |t|
     t.string   "name"
-    t.string   "symbol"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "date"
+    t.decimal  "open",       precision: 4, scale: 2
+    t.decimal  "high",       precision: 4, scale: 2
+    t.decimal  "low",        precision: 4, scale: 2
+    t.decimal  "close",      precision: 4, scale: 2
+    t.decimal  "volume",     precision: 4, scale: 2
+    t.decimal  "adjclose",   precision: 4, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
 end

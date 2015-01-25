@@ -3,9 +3,9 @@
   <h2>This is the Home Page, Fellas</h2>
   <div class = "row">
     <div class = "col-md-6 col-md-offset-3">
-      <%= form_for(:stock, url: stocks_path(:name)) do |f| %>
-        <%= f.text_field :name %>
-        <%= f.submit "Find", class: "btn btn-primary" %>
+      <%= form_tag stocks_path, method:'get' do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag "search", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
