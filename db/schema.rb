@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121051239) do
+ActiveRecord::Schema.define(version: 20150123075021) do
+
+  create_table "stock_infos", force: :cascade do |t|
+    t.datetime "date"
+    t.decimal  "open"
+    t.decimal  "high"
+    t.decimal  "low"
+    t.decimal  "close"
+    t.decimal  "volume"
+    t.decimal  "adjclose"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "stocks", force: :cascade do |t|
     t.string   "name"
