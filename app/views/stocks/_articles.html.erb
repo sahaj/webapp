@@ -1,0 +1,35 @@
+<div class="container" id="articleform">
+<table class="table"> 
+    <thead class="text-uppercase text-center">
+        <th> Articles </th>
+        <th> Sentiment </th>
+    </thead>
+    <tbody>
+        <% @total=0 %>
+        <% @article.each do |a| %>
+        <% @total += a.sentiment %>
+        <% if a.sentiment > 0 %> 
+            <tr class="success">
+                <td><%= link_to a.title, a.url %></td>
+                <td>+<%= '%.2f' % a.sentiment %></td>
+            </tr>
+        <% elsif a.sentiment < 0 %>
+            <tr class="danger">
+                <td><%= link_to a.title, a.url %></td>
+                <td><%= '%.2f' % a.sentiment %></td>
+            </tr>
+        <% else %>
+            <tr class="active">
+                <td><%= link_to a.title, a.url %></td>
+                <td>0<%= '%.2f' % a.sentiment %></td>
+            </tr>
+        <%end%>
+        <% end %>
+        <tr class="info">
+            <% d= Date.strptime(@date, "%Y-%m-%d") %>
+            <td>OverAll Sentiment for <strong><%= d.strftime("%B %e, %Y") %> </strong></td>
+            <td> <strong><%= '%.2f' % @total%> </strong></td>
+        </tr>
+    </tbody>
+</table>
+</div>

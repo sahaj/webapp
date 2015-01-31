@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require highstock
 //= require highstock/highcharts-more
-/*
-   *= require jquery-ui
-*/
+//= require jquery-ui
 //= require turbolinks
 //= require_tree .

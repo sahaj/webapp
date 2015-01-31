@@ -1,14 +1,24 @@
 <% provide(:title, @name) %>
+
 <h1> <%= @name %> </h1>
 <div id="Chart1" style="height: 400px; min-width: 500px"></div>
-<!--<p id="demo"> </p>-->
+
+<div class="container">
+    <%= form_tag new_stock_path, method:'get', remote: true do |f|%>
+    <%= text_field_tag :datepicker %>
+    <%=submit_tag "Find Articles"%>
+    <%end%>
+</div>
+
+<div id="articleform">
+
 
 <script>
 $(function() {
-    var json_data = <%= raw @stock.to_json(only: [:date, :high]) %>;
+    var json_data = <%= raw @stock.to_json(only: [:date, :adjclose]) %>;
 
 	var ar  = json_data.map(function(x){
-		return [Date.parse(x.date), +x.high];
+		return [Date.parse(x.date), +x.adjclose];
 	});
 
      ar.sort(sortFunction);
@@ -17,8 +27,7 @@ $(function() {
             return (a[0]<b[0]) ? -1:1;
      }
 
-	//jsons = JSON.stringify(ar);
-    //document.getElementById("demo").innerHTML = jsons;
+    //document.getElementById("demo").innerHTML = JSON.stringify(ar);
     $('#Chart1').highcharts('StockChart', {
 
         rangeSelector: {
