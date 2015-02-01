@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bootstrap-datepicker-rails'
+gem "highcharts-rails"
 gem "highstock-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'

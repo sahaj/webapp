@@ -6,6 +6,7 @@ class StocksController < ApplicationController
   def index
     @name = params[:search]
     @stock = Stock.where(name: @name)
+    @sentiment = Article.where(stockname: @name)
     @@stockname = @name
   end
   
