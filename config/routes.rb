@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
+  get 'strategy' => 'static_pages#strategy1'
 
   resources :stocks
 

@@ -13,11 +13,9 @@
 
 <div id="articleform">
 
-
 <script>
 $(function() {
     var json_data = <%= raw @stock.to_json(only: [:date, :adjclose]) %>;
-
 	var ar  = json_data.map(function(x){
 		return [Date.parse(x.date), +x.adjclose];
 	});
@@ -33,15 +31,21 @@ $(function() {
            return (a[0]<b[0]) ? -1:1;
     }
 
-    //document.getElementById("demo").innerHTML = JSON.stringify(ar);
+    //document.getElementById("demo").innerHTML = JSON.stringify(senti_data);
     $('#Chart1').highcharts('StockChart', {
 
         rangeSelector: {
-            selected: 1
+            selected: 0
         },
 
         title: {
             text: 'Stock Price'
+        },
+
+        tooltip: {
+            valueDecimals: 2,
+            //valuePrefix: '$',
+            valueSuffix: ' USD'
         },
 
         series: [{
@@ -64,18 +68,29 @@ $(function() {
                     y2: 1
                 },
                 stops: [
-                    [0, 'rgb(255, 155, 155)'],
-                    [1, 'rgb(200, 200, 55)']
+                    [0, 'rgb(255, 255, 255)'],
+                    [1, 'rgb(255, 255, 255)']
                 ]
                 }
             },
 
             rangeSelector: {
-                selected: 1
+                selected: 0
             },
 
             title: {
                 text: 'Sentiment Values'
+            },
+
+            yAxis: {
+                labels: {
+                    align: 'right',
+                    y: 0
+                }
+            },
+            
+            tooltip: {
+            valueDecimals: 2,
             },
 
             series: [{
@@ -83,7 +98,7 @@ $(function() {
                 name: 'Stock Sentiment',
                 data: senti_ar,
                 dataGrouping: {
-                    approximation: 'average',
+                    approximation: 'sum', //showing sentiment sum for whole week
                     units: [[
                         'week',
                         [1]
