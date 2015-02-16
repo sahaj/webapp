@@ -1,0 +1,50 @@
+<% d= Date.strptime(@maxdate, "%Y-%m-%d") %>
+<div class="container">
+	<!--<div class="container" id="Chart1" style="height: 400px; min-width: 500px"></div>-->
+	<h2> Strategy for week from <%=d.strftime("%B %e, %Y")%></h2>
+	<%= render 'weeklystrategy' %>
+</div>
+
+<script>
+$(function() {
+    var json_data = <%= raw @stock.to_json(only: [:date, :adjclose]) %>;
+	var ar  = json_data.map(function(x){
+		return [Date.parse(x.date), +x.adjclose];
+	});
+    ar.sort(sortFunction);
+
+    var senti_data = <%= raw @sentiment.to_json(only: [:date, :sentiment]) %>;
+    var senti_ar = senti_data.map(function(x){
+        return [Date.parse(x.date), Math.round(+x.sentiment*100)/100];
+    });
+    senti_ar.sort(sortFunction);
+    
+    function sortFunction(a,b){
+           return (a[0]<b[0]) ? -1:1;
+    }
+
+    $('#Chart1').highcharts('StockChart', {
+
+        rangeSelector: {
+            selected: 0
+        },
+
+        title: {
+            text: 'Stock Price'
+        },
+
+        tooltip: {
+            valueDecimals: 2,
+            //valuePrefix: '$',
+            valueSuffix: ' USD'
+        },
+
+        series: [{
+            name: '<%= @name %>',
+            data: ar,
+            tooltip: {
+                valueDecimals: 2
+            }
+        }]
+    });
+</script>

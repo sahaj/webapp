@@ -1,0 +1,29 @@
+<table class="table table-bordered"> 
+    <thead class="text-uppercase text-center">
+        <th> Stock Symbol </th>
+        <th> Stock Name </th>
+        <th> Returns </th>
+        <th> ToDO </th>
+    </thead>
+    <tbody>
+        <% @week_strategy.each do |ws| %>
+        <tr >
+            <td class="col-md-2"> <%= ws.s_id.upcase %></td>
+            <td class="col-md-2"> <% if @sname.find_by(s_id:ws.s_id) != nil  %>
+                <%=  @sname.find_by(s_id:ws.s_id).s_name.capitalize %>
+                <%end%> 
+            </td>
+            <td class="col-md-2"> <% wr = @week_return.find_by(s_id:ws.s_id) %>
+                <% if wr != nil %>
+                <%=  '%.3f' % wr.return %>
+                <%end%> 
+            </td>
+            <% if ws.todo == 'on' %> 
+                <td class="success col-md-2">BUY / HOLD</td>
+            <% else %>
+                <td class="danger">SELL </td>
+            <%end%>
+        </tr>
+        <%end%>
+    </tbody>
+</table>

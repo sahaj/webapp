@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129102259) do
+ActiveRecord::Schema.define(version: 20150216092511) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "stockname"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20150129102259) do
     t.string   "url"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+  end
+
+  create_table "stock_names", force: :cascade do |t|
+    t.string   "s_id"
+    t.string   "s_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -35,6 +42,30 @@ ActiveRecord::Schema.define(version: 20150129102259) do
     t.decimal  "adjclose",   precision: 4, scale: 2
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+  end
+
+  create_table "strategies", force: :cascade do |t|
+    t.string   "date"
+    t.string   "s_id"
+    t.string   "todo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "total_earnings", force: :cascade do |t|
+    t.string   "date"
+    t.string   "s_id"
+    t.decimal  "return"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weekly_earnings", force: :cascade do |t|
+    t.string   "date"
+    t.string   "s_id"
+    t.decimal  "return"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
