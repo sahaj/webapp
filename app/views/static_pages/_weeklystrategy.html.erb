@@ -1,16 +1,18 @@
+<div class="container ">
 <table class="table table-bordered"> 
+    <div class="row">
     <thead class="text-uppercase text-center">
-        <th> Stock Symbol </th>
-        <th> Stock Name </th>
-        <th> Returns </th>
-        <th> ToDO </th>
+        <th class="col-md-2"> Stock Symbol </th>
+        <th class="col-md-1"> Company Name </th>
+        <th class="col-md-1"> Weekly Return </th>
+        <th class="col-md-1"> ToDO </th>
     </thead>
     <tbody>
         <% @week_strategy.each do |ws| %>
         <tr >
             <td class="col-md-2"> <%= ws.s_id.upcase %></td>
             <td class="col-md-2"> <% if @sname.find_by(s_id:ws.s_id) != nil  %>
-                <%=  @sname.find_by(s_id:ws.s_id).s_name.capitalize %>
+                <%=  @sname.find_by(s_id:ws.s_id).s_name.titleize %>
                 <%end%> 
             </td>
             <td class="col-md-2"> <% wr = @week_return.find_by(s_id:ws.s_id) %>
@@ -26,4 +28,6 @@
         </tr>
         <%end%>
     </tbody>
+    <div>
 </table>
+</div>

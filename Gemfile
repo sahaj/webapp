@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'whenever', require: false
 gem 'bootstrap-datepicker-rails'
 gem "highcharts-rails"
 gem "highstock-rails"

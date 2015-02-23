@@ -1,1 +1,1 @@
-This is a webapp for StockIt
+This is a webapp for StockWIT

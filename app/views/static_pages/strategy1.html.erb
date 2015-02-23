@@ -1,8 +1,10 @@
 <% d= Date.strptime(@maxdate, "%Y-%m-%d") %>
-<div class="container">
 	<!--<div class="container" id="Chart1" style="height: 400px; min-width: 500px"></div>-->
 	<h2> Strategy for week from <%=d.strftime("%B %e, %Y")%></h2>
 	<%= render 'weeklystrategy' %>
+
+<div class="container">
+	<h2> Top Author Articles </h2>
 </div>
 
 <script>

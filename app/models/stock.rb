@@ -6,3 +6,5 @@ end
 
 
 # CSV.foreach('/Users/sahaj/Desktop/NASDAQ.txt', headers: true) do |row|
+
+# File.basename("/Users/sahaj/Desktop/SAND Lab/webapp/app/views/stocks/")
