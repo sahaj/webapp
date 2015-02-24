@@ -9,9 +9,14 @@ class StaticPagesController < ApplicationController
   end
 
   def strategy1
-  	@maxdate = Strategy.maximum(:date)
-  	@week_strategy = Strategy.all
-  	@sname = StockName.all
+  	#@maxdate = Strategy.maximum(:date)
+    @dates =  Strategy.pluck('DISTINCT date')
+    @maxdate = @dates[-1]
+    @prevdate = @dates[-2]
+  	@week_strategy = Strategy.where(date: @maxdate)
+    @prev_week_strategy = Strategy.where(date: @prevdate)
+    @sname = WeeklyEarning.pluck('DISTINCT s_id')
+  	#@sname = StockName.all
   	@week_return = WeeklyEarning.all
   end
   

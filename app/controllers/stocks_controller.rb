@@ -4,7 +4,7 @@ class StocksController < ApplicationController
   end
  
   def index
-    @name = params[:search]
+    @name = params[:search].downcase
     @stock = Stock.where(name: @name)
     @sentiment = Article.where(stockname: @name).select('date, SUM(sentiment) as sentiment').group(:date)#.sum(:sentiment)
     @@stockname = @name

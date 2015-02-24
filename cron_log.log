@@ -753,4 +753,259 @@ angyf.pk:539
 angzf.pk:619
 anh:4264
 anik:5491
-anioy:1281
+anioy:1281/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/csv.rb:1851:in `block (2 levels) in shift': Illegal quoting in line 1. (CSV::MalformedCSVError)
+	from /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/csv.rb:1813:in `each'
+	from /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/csv.rb:1813:in `block in shift'
+	from /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/csv.rb:1773:in `loop'
+	from /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/csv.rb:1773:in `shift'
+	from /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/csv.rb:1715:in `each'
+	from /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/csv.rb:1296:in `parse'
+	from putdata.rb:16:in `block (3 levels) in <top (required)>'
+	from putdata.rb:15:in `times'
+	from putdata.rb:15:in `each'
+	from putdata.rb:15:in `block (2 levels) in <top (required)>'
+	from putdata.rb:12:in `open'
+	from putdata.rb:12:in `block in <top (required)>'
+	from putdata.rb:9:in `each'
+	from putdata.rb:9:in `<top (required)>'
+	from /Library/Ruby/Gems/2.0.0/gems/railties-4.2.0/lib/rails/commands/runner.rb:60:in `load'
+	from /Library/Ruby/Gems/2.0.0/gems/railties-4.2.0/lib/rails/commands/runner.rb:60:in `<top (required)>'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `block in require'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:240:in `load_dependency'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require'
+	from /Library/Ruby/Gems/2.0.0/gems/railties-4.2.0/lib/rails/commands/commands_tasks.rb:123:in `require_command!'
+	from /Library/Ruby/Gems/2.0.0/gems/railties-4.2.0/lib/rails/commands/commands_tasks.rb:90:in `runner'
+	from /Library/Ruby/Gems/2.0.0/gems/railties-4.2.0/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /Library/Ruby/Gems/2.0.0/gems/railties-4.2.0/lib/rails/commands.rb:17:in `<top (required)>'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `block in require'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:240:in `load_dependency'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require'
+	from /Users/sahaj/Desktop/SAND Lab/webapp/bin/rails:8:in `<top (required)>'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `load'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `block in load'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:240:in `load_dependency'
+	from /Library/Ruby/Gems/2.0.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `load'
+	from /Library/Ruby/Site/2.0.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Library/Ruby/Site/2.0.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from -e:1:in `<main>'
+
+anioy.pk:1281
+anip:3721
+anldp.pk:1254
+anlky:986
+anlky.pk:986
+anly:9402
+ann:5987
+annb:3436
+anpdf.pk:640
+anr:2521
+anrgf:1882
+anrgf.pk:1882
+ansbf:739
+ansbf.ob:739
+ansly.pk:500
+anss:4698
+antb:530
+antb.ob:530
+antbd:377
+anth:1254
+antm:3350
+antp:4230
+ants.ob:4041
+anv:1960
+anw:2063
+any:385
+anzby:5088
+anzby.pk:5089
+anzff:589
+anzff.pk:589
+aoa:1579
+aobi.ob:2922
+aocif:704
+aod:1973
+aogn.pk:604
+aoi:5007
+aoiff:1540
+aoiff.pk:1540
+aok:1573
+aol:1318
+aolax:2869
+aols:4795
+aols.ob:4795
+aom:1579
+aomff:2197
+aomff.pk:2197
+aon:7679
+aoneq.pk:981
+aonny:1295
+aonny.pk:1295
+aor:1573
+aorgf.pk:696
+aortf.pk:769
+aos:7678
+aosdf:1925
+aosdf.pk:1925
+aosl:1212
+aovtf.pk:1509
+ap:7713
+apa:9023
+apaff.pk:1688
+apagf:7704
+apajf:1719
+apajf.pk:1719
+apam:494
+apat.pk:972
+apb:7015
+apbrf.pk:383
+apbs.ob:2227
+apc:7173
+apd:8039
+apdn:2922
+apdsf:1041
+apei:1832
+apely:1215
+apely.pk:950
+apemy.pk:1021
+apeof:1291
+apeof.pk:1291
+apf:5179
+apgi:4880
+apgi.ob:4880
+aph:5865
+aphb:5226
+aphb.pk:5226
+aphy.ob:715
+api:6053
+apl:3789
+aplcy:209
+aplcy.pk:859
+aplvf:1540
+apnhf.pk:687
+apnhy:1230
+apnhy.pk:853
+apo:980
+apog:10548
+apol:5069
+app:2256
+appg:164
+appy:3040
+appz.ob:1206
+aprdm.ob:4019
+apri:3987
+apro.pk:1289
+apryf:739
+apryy:715
+apsa:2837
+apt:4030
+aptl.pk:1698
+apto:82
+apts:978
+apu:5000
+apwc:2922
+apyrf:1094
+apyrf.pk:1094
+aq:2625
+aqarf.pk:2208
+aqmix:1291
+aqpbf:1540
+aqpbf.pk:1540
+aqpty:2197
+aqpty.pk:2197
+aqpvf.pk:1230
+aqq:3251
+aqunf:1295
+aqunf.pk:1295
+aqxp:242
+ar:343
+ara:3948
+araff:1677
+araff.pk:1677
+aray:2023
+arb:3672
+arba:3351
+arbv:2114
+arc:2528
+arcay.pk:5323
+arcb:5737
+arcc:2613
+arci:5865
+arco:969
+arcp:867
+arcs.ob:1074
+arcvf.pk:779
+arcw:3948
+arcx:324
+ardc:561
+ardm:4699
+ardm.ob:4699
+ardna:9048
+ardx:170
+are:4463
+ares:203
+aresf:1873
+aresf.pk:1873
+arex:1833
+arfcf:1291
+arg:7100
+argef:1230
+argef.pk:1230
+argkd:814
+argkf:1540
+argof.pk:2040
+args:261
+argt:999
+arhn.ob:6277
+arhvf:913
+ari:1361
+aria:5143
+arii:2286
+aris:5860
+aris.ob:5860
+arkaf:1230
+arkaf.pk:1230
+arkay.pk:2204
+arkg:76
+arkk:76
+arkq:99
+arkr:7358
+arkw:99
+arkxf:1094
+arkxf.pk:1094
+arl:7679
+arlp:3903
+arm:3915
+armax:2238
+armf:330
+armh:4239
+armk:299
+armzf:2043
+armzf.pk:2043
+arna:3663
+arnbf:1261
+arnbf.pk:1981
+arngf:1244
+arngf.pk:1244
+arni:716
+arni.pk:716
+aro:3214
+aroff:531
+arow:7679
+arp:752
+arpi:450
+arql:4617
+arr:1817
+arref.pk:1319
+arrmf:161
+arrs:5396
+arry:3576
+ars:2348
+arsd:1984
+arsef.pk:1540
+art:3946
+artc:4789
+artd.pk:2994
+arth:538
+arth.ob:538
+article_list.csv:23690

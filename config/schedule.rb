@@ -18,10 +18,15 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-set :environment, "development"
-set :output, "cron_log.log"
 
-every :day, :at => '11:44pm' do
-	runner "putdata.rb"
+
+#set :environment, "development"
+#set :output, "cron_log.log"
+
+#every :day, :at => '11:44pm' do
+	#runner "putdata.rb"
 	#command 'cd /Users/sahaj/Desktop/SAND Lab/webapp/;ruby putdata.rb'
-end
+#end
+
+#whenever --update
+#crontab -l #to view cron file
