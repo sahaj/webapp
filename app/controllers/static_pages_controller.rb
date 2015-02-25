@@ -13,11 +13,22 @@ class StaticPagesController < ApplicationController
     @dates =  Strategy.pluck('DISTINCT date')
     @maxdate = @dates[-1]
     @prevdate = @dates[-2]
-  	@week_strategy = Strategy.where(date: @maxdate)
-    @prev_week_strategy = Strategy.where(date: @prevdate)
-    @sname = WeeklyEarning.pluck('DISTINCT s_id')
-  	#@sname = StockName.all
-  	@week_return = WeeklyEarning.all
+
+  	@week_strat = Strategy.where(date: @maxdate)
+    @prev_week_strat = Strategy.where(date: @prevdate)
+
+    @sid = Strategy.pluck('DISTINCT s_id')
+    @sname = Hash.new()
+    @sid.each do |s|
+      v = StockName.find_by(s_id: s)
+      if v != nil 
+        @sname[s] = v.s_name
+      end
+    end
+
+  	@week_return = WeeklyEarning.where(date: @maxdate)
+    @total_return = TotalEarning.where(date: @maxdate)
+
   end
   
 end

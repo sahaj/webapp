@@ -1,33 +1,48 @@
 <div class="container ">
-<table class="table table-bordered"> 
+    <table class="table table-bordered"> 
     <div class="row">
-    <thead class="text-uppercase text-center">
-        <th class="col-md-2"> Stock Symbol </th>
-        <th class="col-md-1"> Company Name </th>
-        <th class="col-md-1"> Weekly Return </th>
-        <th class="col-md-1"> ToDO </th>
-    </thead>
-    <tbody>
-        <% @week_strategy.each do |ws| %>
-        <tr >
-            <td class="col-md-2"> <%= ws.s_id.upcase %></td>
-            <td class="col-md-2"> <% if @sname.find_by(s_id:ws.s_id) != nil  %>
-                <%=  @sname.find_by(s_id:ws.s_id).s_name.titleize %>
-                <%end%> 
-            </td>
-            <td class="col-md-2"> <% wr = @week_return.find_by(s_id:ws.s_id) %>
-                <% if wr != nil %>
-                <%=  '%.3f' % wr.return %>
-                <%end%> 
-            </td>
-            <% if ws.todo == 'on' %> 
-                <td class="success col-md-2">BUY / HOLD</td>
-            <% else %>
-                <td class="danger">SELL </td>
+        <thead class="text-uppercase text-center">
+            <th> Stock Symbol </th>
+            <th> Company Name </th>
+            <th> Weekly Return </th>
+            <th> Total Return </th>
+            <th> ToDO </th>
+        </thead>
+        <tbody>
+            <% @sid.each do |s| %>
+            <tr>
+                <td><%= s.upcase %></td>
+                <td>
+                    <% if @sname.has_key?(s) %>
+                    <%= @sname.fetch(s).titleize %>
+                    <%end%>
+                </td>
+                <td>
+                    <% wr = @week_return.find_by(s_id: s) %>
+                    <% if wr != nil %>
+                    <%= '%.3f' % wr.return %>
+                    <%end%>
+                </td>
+                <td>
+                    <% tr = @total_return.find_by(s_id: s) %>
+                    <% if tr != nil %>
+                    <%= '%.3f' % tr.return %>
+                    <%end%>
+                </td>
+                <% ws = @week_strat.find_by(s_id: s) %>
+                <% pws = @prev_week_strat.find_by(s_id: s) %>
+                    <% if ws!=nil and ws.todo=='on' %>
+                        <% if pws.todo=='off' %>
+                            <td class="success"> BUY </td>
+                        <% else %>
+                            <td class="active"> HOLD </td>
+                        <% end %>
+                    <% else %>
+                        <td class="danger"> SELL </td>
+                    <% end %>
+            </tr>
             <%end%>
-        </tr>
-        <%end%>
-    </tbody>
-    <div>
-</table>
+        </tbody>
+    </div>
+    </table>
 </div>
