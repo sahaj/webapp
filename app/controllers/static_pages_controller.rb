@@ -17,7 +17,7 @@ class StaticPagesController < ApplicationController
   	@week_strat = Strategy.where(date: @maxdate)
     @prev_week_strat = Strategy.where(date: @prevdate)
 
-    @sid = Strategy.pluck('DISTINCT s_id')
+    @sid = WeeklyEarning.pluck('DISTINCT s_id')
     @sname = Hash.new()
     @sid.each do |s|
       v = StockName.find_by(s_id: s)
@@ -25,9 +25,12 @@ class StaticPagesController < ApplicationController
         @sname[s] = v.s_name
       end
     end
-
   	@week_return = WeeklyEarning.where(date: @maxdate)
     @total_return = TotalEarning.where(date: @maxdate)
+
+    #respond_to do |format|
+     # format.json
+    #end
 
   end
   

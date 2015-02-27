@@ -9,11 +9,12 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//REMOVED TURBOLINKS CHECK LATER TO ADD OR NOT
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require highstock
 //= require highstock/highcharts-more
 //= require jquery-ui
-//= require turbolinks
+
 //= require_tree .
