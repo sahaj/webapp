@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-
-gem 'jquery-datatables-rails', '~> 3.1.1'
+gem 'yaml_db'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
 gem 'whenever', require: false
 gem 'bootstrap-datepicker-rails'

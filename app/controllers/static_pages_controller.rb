@@ -28,10 +28,11 @@ class StaticPagesController < ApplicationController
   	@week_return = WeeklyEarning.where(date: @maxdate)
     @total_return = TotalEarning.where(date: @maxdate)
 
+    @perform = Perform.all
+    @perA_perform = ArticlePerform.all
     #respond_to do |format|
      # format.json
     #end
-
   end
   
 end

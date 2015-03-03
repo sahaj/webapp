@@ -1,14 +1,20 @@
 <div class="center jumbotron">
-  <h1>Welcome to the world of Stocks</h1>
-  <h2>This is the Home Page, Fellas</h2>
+  <h1>Crowds on Wall Street</h1>
+  <h2>Extracting Value from Collaborative Investing Platforms</h2>
   <div class = "row">
     <div class = "col-md-6 col-md-offset-3">
       <%= form_tag stocks_path, method:'get' do %>
         <%= text_field_tag :search %>
-        <%= submit_tag "search", class: "btn btn-primary" %>
+        <%= submit_tag "Find Stock", class: "btn btn-primary btn-sm" %>
       <% end %>
     </div>
   </div>
-  <div><h2> <%= link_to "Strategy", strategy_path %> based on SeekingAlpha </h2>
+  <div><h2> <%= link_to "Investing Strategy", strategy_path %> based on SeekingAlpha 
+    <a class="glyphicon glyphicon-question-sign" aria-hidden="true" ></a>
+    </h2>
   </div>
+</div>
+
+<div class="lead center"> 
+  This site is the homepage for the research project using crowdsourcing for stock investment, by SANDLab in University of California, Santa Barbara. Here, you can find explanations and links to our work, a tool to query real-time crowdsourced sentiments about given stocks, and a live simulation of sentiment-driven stock trading. 
 </div>

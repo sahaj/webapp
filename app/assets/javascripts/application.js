@@ -16,5 +16,4 @@
 //= require highstock
 //= require highstock/highcharts-more
 //= require jquery-ui
-
 //= require_tree .

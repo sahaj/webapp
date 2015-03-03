@@ -21,10 +21,10 @@
 
 
 #set :environment, "development"
-#set :output, "cron_log.log"
+set :output, "cron_log.log"
 
-#every :day, :at => '11:44pm' do
-	#runner "putdata.rb"
+#every :day, :at => '10:02pm' do
+	#runner "/Users/sahaj/Desktop/SAND Lab/webapp/scripts/fixer.rb"
 	#command 'cd /Users/sahaj/Desktop/SAND Lab/webapp/;ruby putdata.rb'
 #end
 

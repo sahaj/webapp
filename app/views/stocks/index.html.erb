@@ -1,7 +1,12 @@
 <% provide(:title, @name) %>
+<div class="lead center"> 
+    The two charts below shows the daily closing price of the stock for <%= @name.upcase %> (data from Yahoo Finance), and aggregated sentiments extracted from SeekingAlpha articles. Detailed articles can be found under the charts.  
+</div>
+<h1 class="center bold"> <%= @company.s_name.titleize + "  [ " + @name.upcase + " ]"%> </h1>
 
-<h1> <%= @name %> </h1>
 <div class="container" id="Chart1" style="height: 400px; min-width: 500px"></div>
+</br>
+</br>
 <div class="container" id="Chart2" style="height: 400px; min-width: 500px"></div>
 
 <div class="container">
@@ -43,7 +48,7 @@ $(function() {
 
         tooltip: {
             valueDecimals: 2,
-            //valuePrefix: '$',
+            valuePrefix: '$',
             valueSuffix: ' USD'
         },
 
@@ -74,7 +79,7 @@ $(function() {
             },
 
             rangeSelector: {
-                selected: 0
+                selected: 4
             },
 
             title: {
