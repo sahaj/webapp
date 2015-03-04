@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303032436) do
+ActiveRecord::Schema.define(version: 20150303230317) do
 
   create_table "article_performs", force: :cascade do |t|
     t.string   "date"
@@ -39,13 +39,10 @@ ActiveRecord::Schema.define(version: 20150303032436) do
   end
 
   create_table "stock_names", force: :cascade do |t|
-    t.string   "s_id"
-    t.string   "s_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "s_id"
+    t.string "old_id"
+    t.string "s_name"
   end
-
-  add_index "stock_names", ["s_id"], name: "index_stock_names_on_s_id"
 
   create_table "stocks", force: :cascade do |t|
     t.string   "s_id"
@@ -63,12 +60,13 @@ ActiveRecord::Schema.define(version: 20150303032436) do
   add_index "stocks", ["s_id"], name: "index_stocks_on_s_id"
 
   create_table "strategies", force: :cascade do |t|
-    t.string   "date"
-    t.string   "s_id"
-    t.string   "todo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "date"
+    t.string  "s_id"
+    t.string  "todo"
+    t.integer "stock_names_id"
   end
+
+  add_index "strategies", ["stock_names_id"], name: "index_strategies_on_stock_names_id"
 
   create_table "total_earnings", force: :cascade do |t|
     t.string   "date"
@@ -78,6 +76,8 @@ ActiveRecord::Schema.define(version: 20150303032436) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "total_earnings", ["date"], name: "index_total_earnings_on_date"
+
   create_table "weekly_earnings", force: :cascade do |t|
     t.string   "date"
     t.string   "s_id"
@@ -85,5 +85,7 @@ ActiveRecord::Schema.define(version: 20150303032436) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "weekly_earnings", ["date"], name: "index_weekly_earnings_on_date"
 
 end

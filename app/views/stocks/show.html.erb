@@ -1,13 +1,14 @@
-<!--<div class="center jumbotron">
-  <h1>Welcome to the world of Stocks</h1>
-  <h2>This is the Home Page, Fellas</h2>
-  <div class = "row">
-    <div class = "col-md-6 col-md-offset-3">
-      <%= form_for(:stock, url: stocks_path(:name)) do |f| %>
-        <%= f.text_field :name %>
-        <%= f.submit "Find", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-  </div>
-</div>
-Copy of Previous home.html -->
+<p id="demo"></p>
+
+<script>
+    <% data = File.read('test.json') %>;
+    var json_data = <%= raw data %>;
+    var ar  = json_data.map(function(x){
+        return [x.symbol, x.name, +x.w_return, +x.t_return, x.todo];
+    });
+  var out;
+  for(i=0; i<ar.length; i++)
+   out += ar[i];
+
+   document.getElementById("demo").innerHTML = out;
+  </script>

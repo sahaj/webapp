@@ -1,11 +1,16 @@
 <% d= Date.strptime(@maxdate, "%Y-%m-%d") %>
-<div class="container" id="Chart1" style="height: 400px; min-width: 500px"></div>
-<h2> Strategy for week starting <%=d.strftime("%B %e, %Y")%></h2>
-	<%= render 'weeklystrategy' %>
-
-<div class="container">
-	<h2> Top Author Articles </h2>
+<div class="lead left text-justify"> <font size="3">
+    <p>
+         This is a live simulation of our stock trading strategy based on sentiments extracted from SeekingAlpha. The detailed algorithm can be found in <a href="http://www.cs.ucsb.edu/~ravenben/publications/pdf/salpha-cscw15.pdf"> our paper.</a> At the very high level, we maintain a 500-stock portfolio, and trade each stock on a weekly basis. For each stock in the portfolio, we sell our entire position in the stock if the experts’ sentiments about this stock in the past week are negative. Otherwise, we hold the stock (or buy it back if we sold it earlier). We update the expert list and portfolio in the beginning of each year. In this simulation, experts are those SeekingAlpha authors who receive most comments on their articles in the past year.
+    </p>
+    <p>
+        Below, we show the accumulated return so far since 2006 (strategy started). Our baseline is “buy-and-hold” on S&ampP 500. We also list the next actions to take on each stock in the portfolio for the coming week. 
+    </p>
+    </font>
 </div>
+<div class="container" id="Chart1" style="height: 400px; min-width: 500px"></div>
+<h2> <font color="#00008B">Strategy for week starting <%=d.strftime("%B %e, %Y")%> </font></h2>
+	<%= render 'weeklystrategy' %>
 
 <script>
 $(function () {
@@ -36,7 +41,10 @@ $(function () {
             $('#Chart1').highcharts('StockChart', {
 
                 title: {
-                    text: 'Accumulated Return Comparison'
+                    text: 'Accumulated Return',
+                    style: {
+                        color: "#00008B"
+                    }
                 },
 
                 rangeSelector: {
@@ -57,6 +65,9 @@ $(function () {
                 },
 
                 yAxis: {
+                    title: {
+                        text: 'Accumulated Return (%)'
+                    },
                     labels: {
                         align: 'right',
                         format: '{value} %'

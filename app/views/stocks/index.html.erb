@@ -1,6 +1,7 @@
 <% provide(:title, @name) %>
-<div class="lead center"> 
-    The two charts below shows the daily closing price of the stock for <%= @name.upcase %> (data from Yahoo Finance), and aggregated sentiments extracted from SeekingAlpha articles. Detailed articles can be found under the charts.  
+<div class="lead left"> <font size="3"> 
+    The two charts below show the daily closing price of the stock for <%= @name.upcase %> (data from Yahoo Finance), and aggregated sentiments extracted from SeekingAlpha articles. Detailed articles can be found under the charts.  
+</font>
 </div>
 <h1 class="center bold"> <%= @company.s_name.titleize + "  [ " + @name.upcase + " ]"%> </h1>
 
@@ -39,7 +40,7 @@ $(function() {
     $('#Chart1').highcharts('StockChart', {
 
         rangeSelector: {
-            selected: 0
+            selected: 4
         },
 
         title: {

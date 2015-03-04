@@ -1,6 +1,5 @@
 class StocksController < ApplicationController
   def show
-    @stock = Stock.find_by(s_id: params[:stock][:name])
   end
  
   def index
