@@ -1,14 +1,23 @@
 <p id="demo"></p>
 
-<script>
-    <% data = File.read('test.json') %>;
-    var json_data = <%= raw data %>;
-    var ar  = json_data.map(function(x){
-        return [x.symbol, x.name, +x.w_return, +x.t_return, x.todo];
-    });
-  var out;
-  for(i=0; i<ar.length; i++)
-   out += ar[i];
 
-   document.getElementById("demo").innerHTML = out;
-  </script>
+<script>
+  <% data = File.read('test.json') %>;
+  var s_data = <%= raw data %>;
+  var out = "<table>";
+  out += "<thead ><th> Stock Symbol </th><th> Company Name </th><th> Weekly Return (%) </th><th> Total Return (%) </th><th> Action </th></thead> <tbody>";
+  for(i=0; i<s_data.length; i++)
+    out += "<tr> <td>" +
+            s_data[i].symbol + 
+            "</td><td>" +
+            s_data[i].name +
+            "</td><td>" +
+            s_data[i].w_return +
+            "</td><td>" +
+            s_data[i].t_return +
+            "</td><td>" +
+            s_data[i].todo +
+            "</td></tr>"
+  out += "</tbody></table>"
+  document.getElementById("demo").innerHTML = out;
+</script>

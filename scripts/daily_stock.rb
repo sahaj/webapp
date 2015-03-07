@@ -3,23 +3,19 @@ require 'csv'
 #ENV['RAILS_ENV'] = "development"
 require '/Users/sahaj/Desktop/SAND Lab/webapp/config/environment.rb'
 
-ar = []
-ar = Dir.glob("/Users/sahaj/Desktop/data/stock_historical_data/*")
+#select distinct stocks from stock table
+#for each of them read file and enter data.
+s_ar = Stock.pluck('DISTINCT s_id')
 
-ar.each do |a|
-  puts File.basename(a)
-  File.open(a) do |fi|
-    begin
-      1.times { fi.readline }
-      2.times.each {
-        CSV.parse(fi.readline, col_sep: ",") do |row|
-          if Stock.where("s_id = ? AND date = ?",  File.basename(a), row[0]).blank? 
-            Stock.create(s_id: File.basename(a), date: row[0], open: row[1], high: row[2], low: row[3], close: row[4], volume: row[5], adjclose: row[6])
-          else
-            puts File.basename(a) + " for date : " + row[0] + " Exists"
-          end 
-        end
-      }
+s_ar.each do |stock|
+  stock_file = "/Users/sahaj/Desktop/data/stock_historical_data/" + stock
+  CSV.foreach(stock_file, col_sep: ",", headers: true) do |row|
+    if Stock.where("s_id = ? AND date = ?",  stock, row[0]).blank? 
+      Stock.create(s_id: stock, date: row[0], adjclose: row[6])
+      puts stock + " for date : " + row[0] + " updated"
+    else
+      puts stock + " for date : " + row[0] + " exists"
+      break
     end
   end
 end

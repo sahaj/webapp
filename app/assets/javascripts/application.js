@@ -16,4 +16,5 @@
 //= require highstock
 //= require highstock/highcharts-more
 //= require jquery-ui
+//= require bootstrap/dropdown
 //= require_tree .

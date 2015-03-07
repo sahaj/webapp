@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303230317) do
+ActiveRecord::Schema.define(version: 20150305221934) do
 
   create_table "article_performs", force: :cascade do |t|
     t.string   "date"
@@ -45,16 +45,9 @@ ActiveRecord::Schema.define(version: 20150303230317) do
   end
 
   create_table "stocks", force: :cascade do |t|
-    t.string   "s_id"
-    t.string   "date"
-    t.decimal  "open",       precision: 4, scale: 2
-    t.decimal  "high",       precision: 4, scale: 2
-    t.decimal  "low",        precision: 4, scale: 2
-    t.decimal  "close",      precision: 4, scale: 2
-    t.decimal  "volume",     precision: 4, scale: 2
-    t.decimal  "adjclose",   precision: 4, scale: 2
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.string  "s_id"
+    t.string  "date"
+    t.decimal "adjclose", precision: 8, scale: 4
   end
 
   add_index "stocks", ["s_id"], name: "index_stocks_on_s_id"
@@ -67,6 +60,44 @@ ActiveRecord::Schema.define(version: 20150303230317) do
   end
 
   add_index "strategies", ["stock_names_id"], name: "index_strategies_on_stock_names_id"
+
+  create_table "top_article_performs", force: :cascade do |t|
+    t.string   "date"
+    t.decimal  "valu"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "top_performs", force: :cascade do |t|
+    t.string   "date"
+    t.decimal  "valu"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "top_strategies", force: :cascade do |t|
+    t.string   "date"
+    t.string   "s_id"
+    t.string   "todo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "top_total_earnings", force: :cascade do |t|
+    t.string   "date"
+    t.string   "s_id"
+    t.decimal  "earning"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "top_weekly_earnings", force: :cascade do |t|
+    t.string   "date"
+    t.string   "s_id"
+    t.decimal  "earning"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "total_earnings", force: :cascade do |t|
     t.string   "date"

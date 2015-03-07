@@ -11,12 +11,15 @@
 <div class="container" id="Chart2" style="height: 400px; min-width: 500px"></div>
 
 <div class="container">
+    <strong>Find articles for:</strong>
     <%= form_tag new_stock_path, method:'get', remote: true do |f|%>
-    <%= text_field_tag :datepicker %>
+    <%= text_field_tag :datepicker, nil, placeholder: @date %>
     <%=submit_tag "Find Articles"%>
     <%end%>
 </div>
 <div id="articleform">
+    <%= render partial: "articles" %>
+</div>
 
 <script>
 $(function() {

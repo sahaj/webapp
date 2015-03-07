@@ -1,11 +1,17 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "StockWIT", root_path, id: "logo" %>
+    <%= link_to "StockCrowd", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home",   root_path %></li>
         <li><%= link_to "Research Overview",   help_path %></li>
-        <li><%= link_to "Stock Trading",   strategy_path %></li>
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"> Investment Strategy <span class="caret"></span> </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a role="menuitem" tabindex="-1" href="/topstrategy">30-stock</a></li>
+            <li><a role="menuitem" tabindex="-1" href="strategy">500-stock</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </div>

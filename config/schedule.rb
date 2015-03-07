@@ -23,10 +23,12 @@
 #set :environment, "development"
 set :output, "cron_log.log"
 
-#every :day, :at => '10:02pm' do
+every :day, :at => '02:26am' do
 	#runner "/Users/sahaj/Desktop/SAND Lab/webapp/scripts/fixer.rb"
+	#runner "/Users/sahaj/Desktop/SAND Lab/webapp/scripts/daily_stock.rb"
+	#runner "/Users/sahaj/Desktop/SAND Lab/webapp/scripts/daily_article.rb"
 	#command 'cd /Users/sahaj/Desktop/SAND Lab/webapp/;ruby putdata.rb'
-#end
+end
 
 #whenever --update
 #crontab -l #to view cron file

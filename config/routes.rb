@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
   get 'strategy' => 'static_pages#strategy1'
-
+  get 'topstrategy' => 'static_pages#topstrategy'
+  get 'top' =>  'static_pages#top30'
+  get 'strat' =>  'static_pages#top500'
   resources :stocks
 
   # The priority is based upon order of creation: first created -> highest priority.

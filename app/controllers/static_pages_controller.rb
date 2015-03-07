@@ -9,13 +9,17 @@ class StaticPagesController < ApplicationController
   end
 
   def strategy1
-  	#@maxdate = Strategy.maximum(:date)
-    @dates =  Strategy.pluck('DISTINCT date')
-    @maxdate = @dates[-1]
-    @prevdate = @dates[-2]
+  	@maxdate = Strategy.maximum(:date)
 
-  	@week_strat = Strategy.where(date: @maxdate)
-    @prev_week_strat = Strategy.where(date: @prevdate)
+    @perform = Perform.all
+    @perA_perform = ArticlePerform.all
+  end
+
+  def topstrategy
+    @dates =  TopStrategy.pluck('DISTINCT date')
+    @maxdate = @dates[-1]
+
+    @week_strat = TopStrategy.where(date: @maxdate)
 
     @sid = @week_strat.pluck('DISTINCT s_id')
     @sname = Hash.new()
@@ -28,15 +32,34 @@ class StaticPagesController < ApplicationController
         @sname[s] = v.s_name
       end
     end
-  	@week_return = WeeklyEarning.where(date: @maxdate)
-    @total_return = TotalEarning.where(date: @maxdate)
+    @week_return = TopWeeklyEarning.where(date: @maxdate)
+    @total_return = TopTotalEarning.where(date: @maxdate)
 
-    @perform = Perform.all
-    @perA_perform = ArticlePerform.all
-    #respond_to do |format|
-     # format.json
-    #end
-    #Strategy.uniq(:s_id).find_by(date: '2015-03-02')
+    @perform = TopPerform.all
+    @perA_perform = TopArticlePerform.all
+
   end
   
+  def top30
+    @d = TopPerform.where('date<=?', params[:datepicker]).maximum(:date)
+    @base = TopPerform.where(date: @d).pluck(:valu)
+
+    @d_perA = TopArticlePerform.where('date<=?', params[:datepicker]).maximum(:date)
+    @base_perA = TopArticlePerform.where(date: @d_perA).pluck(:valu)
+    
+    @perform = TopPerform.where("date>=?",params[:datepicker])
+    @perA_perform = TopArticlePerform.where("date>=?",params[:datepicker])
+  end
+
+  def top500
+    @d = Perform.where('date<=?', params[:datepicker]).maximum(:date)
+    @base = Perform.where(date: @d).pluck(:valu)
+
+    @d_perA = ArticlePerform.where('date<=?', params[:datepicker]).maximum(:date)
+    @base_perA = ArticlePerform.where(date: @d_perA).pluck(:valu)
+    
+    
+    @perform = Perform.where("date>=?",params[:datepicker])
+    @perA_perform = ArticlePerform.where("date>=?",params[:datepicker])
+  end
 end

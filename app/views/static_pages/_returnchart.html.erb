@@ -1,0 +1,86 @@
+<div class="container" id="Chart1" style="height: 400px; min-width: 500px">
+</div>
+
+<script>
+$(function () {
+    var base= <%= raw @base.to_json(only: [:valu]) %>;
+    var base_perA = <%= raw @base_perA.to_json(only: [:valu]) %>;
+    var json_data = <%= raw @perform.to_json(only: [:date, :valu]) %>;
+    var ar  = json_data.map(function(x){
+        return [Date.parse(x.date), (Math.exp(+x.valu - base)-1)*100];
+    });
+    ar.sort(sortFunction);
+    var perA_data = <%= raw @perA_perform.to_json(only: [:date, :valu]) %>;
+    var perA_ar  = perA_data.map(function(x){
+        return [Date.parse(x.date), (Math.exp(+x.valu - base_perA)-1)*100];
+    });
+    perA_ar.sort(sortFunction);
+    
+    function sortFunction(a,b){
+           return (a[0]<b[0]) ? -1:1;
+    }
+    var seriesOptions = [],
+        seriesCounter = 0,
+        data = [perA_ar, ar],
+        color = ['#008000', '#FF0000'],
+        names = ['Sentiment Based Strategy', 'S&P 500'],
+        // create the chart when all data is loaded
+        createChart = function () {
+            $('#Chart1').highcharts('StockChart', {
+                title: {
+                    text: 'Accumulated Return',
+                    style: {
+                        color: "#00008B"
+                    }
+                },
+                rangeSelector: {
+                    selected: 5
+                },
+                legend: {
+                    enabled: true,
+                    //floating: true,
+                    //backgroundColor: '#FCFFC5',
+                    //borderColor: 'black',
+                    //borderWidth: 2,
+                    layout: 'vertical',
+                    verticalAlign: 'top',
+                    //y: 100,
+                    x: 450
+                    //shadow: true
+                },
+                yAxis: {
+                    title: {
+                        text: 'Accumulated Return (%)'
+                    },
+                    labels: {
+                        align: 'right',
+                        format: '{value} %'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+                tooltip: {
+                    valueDecimals: 2
+                },
+                series: seriesOptions
+            });
+        };
+
+    $.each(names, function (i, name) {
+            seriesOptions[i] = {
+                name: name,
+                data: data[i],
+                color: color[i]
+            };
+            // As we're loading the data asynchronously, we don't know what order it will arrive. So
+            // we keep a counter and create the chart when all the data is loaded.
+            seriesCounter += 1;
+            if (seriesCounter === names.length) {
+                createChart();
+            }
+    });
+});
+</script>

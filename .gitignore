@@ -15,3 +15,5 @@
 /log/*
 !/log/.keep
 /tmp
+/cron_log.log
+/db/strategy500.json

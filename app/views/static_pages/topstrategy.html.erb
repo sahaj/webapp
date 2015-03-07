@@ -1,0 +1,27 @@
+<% d= Date.strptime(@maxdate, "%Y-%m-%d") %>
+<h1 class="center bold"> <font size="6">Stock Trading Simulation (30 stocks)</font></h1>
+
+<div class="lead left text-justify"> <font size="3">
+    <p>
+         This is a live simulation of our stock trading strategy based on sentiments extracted from SeekingAlpha. The detailed algorithm can be found in <a href="http://www.cs.ucsb.edu/~ravenben/publications/pdf/salpha-cscw15.pdf"> our paper.</a> At the very high level, we maintain a 30-stock portfolio, and trade each stock on a weekly basis. For each stock in the portfolio, we sell our entire position in the stock if the experts’ sentiments about this stock in the past week are negative. Otherwise, we hold the stock (or buy it back if we sold it earlier). We update the expert list and portfolio in the beginning of each year. In this simulation, experts are those SeekingAlpha authors who receive most comments on their articles in the past year.
+    </p>
+    <p>
+        Below, we show the accumulated return so far since 2006 (strategy started). Our baseline is “buy-and-hold” S&ampP 500. We also list the next actions to take on each stock in the portfolio for the coming week. 
+    </p>
+    </font>
+</div>
+
+<div class="lead"><font size="3">
+Accumulated Return Starting From: 
+<%= form_tag top_path, method:'get', remote: true do |f|%>
+    <%= text_field_tag :datepicker, nil, placeholder: '2006-01-01' %>
+    <%=submit_tag "Calculate"%>
+<%end%>
+</div></font>
+<div id="Chart1"> 
+<%= render "topreturnchart" %>
+</div>
+
+<h2> <font color="#00008B">Strategy for week starting <%=d.strftime("%B %e, %Y")%> </font></h2>
+
+<%= render 'topweeklystrategy' %>

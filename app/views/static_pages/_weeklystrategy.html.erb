@@ -1,53 +1,25 @@
-<div class="container ">
-    <table class="table table-bordered" id="example"> 
-    <div class="row">
-        <thead class="text-uppercase text-center">
-            <th> Stock Symbol </th>
-            <th> Company Name </th>
-            <th> Weekly Return (%) </th>
-            <th> Total Return (%) </th>
-            <th> ToDO </th>
-        </thead>
-        <tbody>
-            <% @sid.each do |s| %>
-            <tr>
-                <td><%= s.upcase %></td>
-                <td>
-                    <% if @sname.has_key?(s) %>
-                    <%= @sname.fetch(s).titleize %>
-                    <%end%>
-                </td>
-                <td>
-                    <% wr = @week_return.find_by(s_id: s) %>
-                    <% if wr != nil %>
-                    <%= '%.2f' % wr.earning %>
-                    <% else %>
-                    <%= 0.0 %>
-                    <%end%>
-                </td>
-                <td>
-                    <% tr = @total_return.find_by(s_id: s) %>
-                    <% if tr != nil %>
-                    <%= '%.2f' % tr.earning %>
-                    <% else %>
-                    <%= 0.0 %>
-                    <%end%>
-                </td>
-                <% ws = @week_strat.find_by(s_id: s) %>
-                <% pws = @prev_week_strat.find_by(s_id: s) %>
-                    <% if ws!=nil and ws.todo=='on' %>
-                        <% if pws.todo=='off' %>
-                        <td class="success"> BUY </td>
-                        <% else %>
-                        <td class="active"> HOLD </td>
-                        <% end %>
-                    <% else %>
-                    <td class="danger"> SELL </td>
-                    <% end %>
-                </td>
-            </tr>
-            <%end%>
-        </tbody>
-    </div>
-    </table>
+<div class="container" id="demo">
+    
 </div>
+
+<script>
+  <% data = File.read('db/strategy500.json') %>;
+  var color = {'SELL': 'danger', 'BUY': 'success', 'HOLD': 'active', 'NO ACTION': 'active'};
+  var s_data = <%= raw data %>;
+  var out = "<table class='table table-bordered' id='example'>";
+  out += "<thead ><th> Stock Symbol </th><th> Company Name </th><th> Weekly Return (%) </th><th> Total Return (%) </th><th> Action </th></thead> <tbody>";
+  for(i=0; i<s_data.length; i++)
+    out += "<tr> <td>" +
+            s_data[i].symbol + 
+            "</td><td>" +
+            s_data[i].name +
+            "</td><td>" +
+            s_data[i].w_return +
+            "</td><td>" +
+            s_data[i].t_return +
+            "</td><td class=" + color[s_data[i].todo] + ">" +
+            s_data[i].todo +
+            "</td></tr>"
+  out += "</tbody></table>"
+  document.getElementById("demo").innerHTML = out;
+</script>

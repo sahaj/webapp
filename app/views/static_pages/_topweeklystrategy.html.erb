@@ -1,0 +1,54 @@
+<div class="container ">
+    <table class="table table-bordered" id="toptable"> 
+    <div class="row">
+        <thead class="text-uppercase text-center">
+            <th> Stock Symbol </th>
+            <th> Company Name </th>
+            <th> Weekly Return (%) </th>
+            <th> Total Return (%) </th>
+            <th> Action </th>
+        </thead>
+        <tbody>
+            <% @sid.each do |s| %>
+            <tr>
+                <td><%= s.upcase %></td>
+                <td>
+                    <% if @sname.has_key?(s) %>
+                    <%= @sname.fetch(s).titleize %>
+                    <%end%>
+                </td>
+                <td>
+                    <% wr = @week_return.find_by(s_id: s) %>
+                    <% if wr != nil %>
+                    <%= '%.2f' % wr.earning %>
+                    <% else %>
+                    <%= 0.0 %>
+                    <%end%>
+                </td>
+                <td>
+                    <% tr = @total_return.find_by(s_id: s) %>
+                    <% if tr != nil %>
+                    <%= '%.2f' % tr.earning %>
+                    <% else %>
+                    <%= 0.0 %>
+                    <%end%>
+                </td>
+                <% ws = @week_strat.find_by(s_id: s) %>
+                    <% if ws!=nil %>
+                        <% if ws.todo=='on' %>
+                            <td class="active"> HOLD </td>
+                        <% elsif ws.todo=='off' %>
+                            <td class="active"> NO ACTION </td>
+                        <% elsif ws.todo=='sell' %>
+                            <td class="danger"> SELL </td>
+                        <% else %>
+                            <td class="success"> BUY </td>
+                        <%end %>
+                    <% end %>
+                </td>
+            </tr>
+            <%end%>
+        </tbody>
+    </div>
+    </table>
+</div>

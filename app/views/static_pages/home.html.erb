@@ -9,33 +9,16 @@
       <% end %>
     </div>
   </div>
-  <div><h2> <%= link_to "Investing Strategy", strategy_path %> based on SeekingAlpha 
-    <a class="glyphicon glyphicon-question-sign" aria-hidden="true" href="help"></a>
-    </h2>
+  <div><h2> 
+    Investment Strategy based on SeekingAlpha ( 
+    <%= link_to "30-stock", topstrategy_path %> / <%= link_to "500-stock", strategy_path %>
+     portfolio ) 
+     <!--<a class="glyphicon glyphicon-question-sign" aria-hidden="true" href="help"></a>-->
+  </h2>
   </div>
 </div>
 
 <div class="lead left text-justify">  <font size="4">
   This site is the homepage for the research project using crowdsourcing for stock investment, by <a href="http://sandlab.cs.ucsb.edu">SAND Lab</a> in University of California, Santa Barbara. Here, you can find explanations and links to <a href="help"> our paper</a>, a tool to query real-time crowdsourced sentiments about given stocks, and a <%= link_to "live simulation",   strategy_path %> of sentiment-driven stock trading. </font>
-<!--
-  </br>
-  Project Overview
-In this project, we study the impact of “experts” in crowdsourcing systems, in the context of SeekingAlpha and StockTwits, two crowdsourced investment services that are encroaching on a space dominated for decades by large investment banks. We seek to understand the quality and impact of content on crowdsourcing investment platforms, by empirically analyzing complete datasets of SeekingAlpha articles (9 years) and StockTwits messages (4 years). 
-<li>
-<ul>
-  We develop sentiment analysis tools and correlate contributed content to the historical performance of relevant stocks. We find that while SeekingAlpha articles and StockTwits messages provide minimal correlation to stock performance in aggregate, a subset of experts contribute more valuable (predictive) content. 
-</ul>
-<ul>
-  We show these experts can be identified by user interactions. We develop a simple stock investment strategy based on experts’ sentiments, which significantly outperforms broader markets. 
-</ul>
-<ul>
-  Finally, we conduct a user survey that sheds light on users views of SeekingAlpha content and stock manipulation.
-</ul>
-
-Publication.
-Crowds on Wall Street: Extracting Value from Collaborative Investing Platforms 
-Gang Wang, Tianyi Wang, Bolun Wang, Divya Sambasivan, Zengbin Zhang, Haitao Zheng, Ben Y. Zhao 
-To Appear: Proceedings of 18th ACM conference on Computer-Supported Cooperative Work and Social Computing (CSCW) 
-Vancouver, Canada, March 2015. -->
-
 </div>
+
